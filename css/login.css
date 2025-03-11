@@ -1,13 +1,33 @@
+/* Main Font */
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf");
+}
+
+/* root */
+:root {
+  --main-margin-bottom: 12px;
+  --main-font: "Roboto";
+  --main-color: #fbf5f5;
+  --second-color: #1d1d1d;
+  --padding: 5px;
+}
+
+/* Reset Style */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
+/* body style */
 body {
-  background: center/100% no-repeat url("../img/login-img.jpg") fixed;
+  font-family: "Roboto";
+  background: center/cover no-repeat url("../imgs/login-img.jpg");
 }
 
+/* Form Input */
 .login-form {
   display: flex;
   justify-content: center;
@@ -16,8 +36,55 @@ body {
 }
 
 .form {
-  width: 200px;
-  height: 200px;
-  background: tomato;
-  
+  backdrop-filter: blur(5px);
+  width: 400px;
+  height: 180px;
+  padding: 13px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px var(--second-color);
+}
+
+/* Title Form */
+.text-login {
+  text-align: center;
+  color: #fbf5f5;
+  margin-bottom: var(--main-margin-bottom);
+}
+
+/* Input Form */
+.username,
+.password,
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.input-username,
+.input-password {
+  font-family: var(--main-font);
+  padding: var(--padding);
+  margin-bottom: var(--main-margin-bottom);
+  background-color: transparent;
+  border: 1px solid var(--second-color);
+  border-radius: 5px;
+  width: 70%;
+  color: var(--main-color);
+  font-family: var(--main-font);
+}
+
+::placeholder {
+  color: var(--main-color);
+  padding-left: 5px;
+}
+
+/* Button */
+.form-btn {
+  border: 1px solid var(--second-color);
+  border-radius: 5px;
+  padding: var(--padding);
+  width: 70%;
+  color: var(--main-color);
+  background-color: #ad71713f;
+  font-family: var(--main-font);
+  cursor: pointer;
 }
