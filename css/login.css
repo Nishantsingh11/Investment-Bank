@@ -11,6 +11,7 @@
   --main-color: #fbf5f5;
   --second-color: #1d1d1d;
   --padding: 5px;
+  --padding-panel: 14px;
 }
 
 /* Reset Style */
@@ -19,20 +20,22 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  line-height: 1.8;
 }
 
 /* body style */
 body {
   font-family: "Roboto";
-  background: center/cover no-repeat url("../imgs/login-img.jpg");
 }
 
-/* Form Input */
+/* Start Form Input */
+
 .login-form {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: center/cover no-repeat url("../imgs/login-img.jpg");
 }
 
 .form {
@@ -47,7 +50,7 @@ body {
 /* Title Form */
 .text-login {
   text-align: center;
-  color: #fbf5f5;
+  color: var(--main-color);
   margin-bottom: var(--main-margin-bottom);
 }
 
@@ -88,3 +91,27 @@ body {
   font-family: var(--main-font);
   cursor: pointer;
 }
+
+/* End Login Form */
+
+/* Start User Panel */
+.user-panel {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.info__user-panel,
+.badge__user-panel,
+.change__user-panel {
+  padding: var(--padding-panel);
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #cfc3c3;
+  background-color: var(--main-color);
+}
+
+.info__user-panel {
+  grid-column: 1/-1;
+}
+/* End User Panel */

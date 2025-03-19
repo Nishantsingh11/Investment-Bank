@@ -1,0 +1,142 @@
+{
+  "users": [
+    {
+      "username": "user1",
+      "password": "pass1",
+      "fullName": "علی احمدی",
+      "email": "ali@example.com",
+      "joinDate": "2023-01-01",
+      "accountNumber": "ACC001",
+      "balance": 1000,
+      "transactions": [
+        {
+          "transactionId": "TXN001",
+          "type": "deposit",
+          "amount": 500,
+          "date": "2023-10-01",
+          "description": "شارژ حساب",
+          "category": "درآمد",
+          "status": "موفق"
+        },
+        {
+          "transactionId": "TXN002",
+          "type": "withdrawal",
+          "amount": 200,
+          "date": "2023-10-02",
+          "description": "پرداخت آنلاین",
+          "category": "خرید",
+          "status": "موفق"
+        }
+      ]
+    },
+    {
+      "username": "user2",
+      "password": "pass2",
+      "fullName": "مریم محمدی",
+      "email": "maryam@example.com",
+      "joinDate": "2023-02-15",
+      "accountNumber": "ACC002",
+      "balance": 2000,
+      "transactions": [
+        {
+          "transactionId": "TXN003",
+          "type": "deposit",
+          "amount": 1000,
+          "date": "2023-09-15",
+          "description": "دریافت هدیه",
+          "category": "درآمد",
+          "status": "موفق"
+        },
+        {
+          "transactionId": "TXN004",
+          "type": "deposit",
+          "amount": 1000,
+          "date": "2023-09-20",
+          "description": "واریز حقوق",
+          "category": "درآمد",
+          "status": "موفق"
+        },
+        {
+          "transactionId": "TXN005",
+          "type": "withdrawal",
+          "amount": 300,
+          "date": "2023-09-25",
+          "description": "پرداخت قبض برق",
+          "category": "پرداخت قبض",
+          "status": "در انتظار"
+        }
+      ]
+    },
+    {
+      "username": "user3",
+      "password": "pass3",
+      "fullName": "رضا رضایی",
+      "email": "reza@example.com",
+      "joinDate": "2023-03-10",
+      "accountNumber": "ACC003",
+      "balance": 1500,
+      "transactions": [
+        {
+          "transactionId": "TXN006",
+          "type": "deposit",
+          "amount": 700,
+          "date": "2023-10-05",
+          "description": "واریز حقوق",
+          "category": "درآمد",
+          "status": "موفق"
+        },
+        {
+          "transactionId": "TXN007",
+          "type": "withdrawal",
+          "amount": 200,
+          "date": "2023-10-06",
+          "description": "خرید مواد غذایی",
+          "category": "خرید",
+          "status": "موفق"
+        }
+      ]
+    },
+    {
+      "username": "user4",
+      "password": "pass4",
+      "fullName": "سارا کریمی",
+      "email": "sara@example.com",
+      "joinDate": "2023-04-20",
+      "accountNumber": "ACC004",
+      "balance": 2500,
+      "transactions": [
+        {
+          "transactionId": "TXN008",
+          "type": "deposit",
+          "amount": 1000,
+          "date": "2023-09-10",
+          "description": "دریافت هدیه",
+          "category": "درآمد",
+          "status": "موفق"
+        },
+        {
+          "transactionId": "TXN009",
+          "type": "deposit",
+          "amount": 1500,
+          "date": "2023-09-15",
+          "description": "واریز حقوق",
+          "category": "درآمد",
+          "status": "موفق"
+        },
+        {
+          "transactionId": "TXN010",
+          "type": "withdrawal",
+          "amount": 500,
+          "date": "2023-09-20",
+          "description": "پرداخت اجاره",
+          "category": "پرداخت",
+          "status": "در انتظار"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalUsers": 4,
+    "totalTransactions": 10
+  }
+}
