@@ -30,6 +30,9 @@ const btn_deposit = document.querySelector(".btn-deposit");
 const input_withdraw = document.querySelector(".input-withdraw");
 const btn_withdraw = document.querySelector(".btn-withdraw");
 
+// Chevron-down Sort
+const chevron_down = document.querySelector(".chevron-head");
+
 // Reset User
 let currentUser = null;
 
@@ -39,14 +42,15 @@ async function validationUser(username, password) {
     const response = await fetch("/db.json");
 
     if (!response.ok) {
-      console.error(`HTTP server status: ${response.error}`);
+      console.error(`HTTP error! status: ${response.error}`);
     }
 
     const data = await response.json();
 
-    const user = data.users.find(
-      (u) => u.username === username && u.password === password
-    );
+    const user =
+      data.users.find(
+        (u) => u.username === username && u.password === password
+      ) || null;
     return user || null;
   } catch (error) {
     console.error("error:", error);
@@ -85,23 +89,6 @@ function loadDashboard() {
   id.textContent = user.accountNumber;
   joinDate.textContent = `(${user.joinDate})`;
 
-  // Left Dashboard --- Transactions Table
-  tbody.innerHTML = user.transactions
-    .map(
-      (transaction) => `
-      <tr>
-          <td>${transaction.type === "deposit" ? "Deposit" : "Withdraw"}</td>
-          <td>${
-            transaction.type === "deposit" ? "+" : "-"
-          }${transaction.amount.toLocaleString()}</td>
-          <td>${transaction.date.replace(/-/g, "/")}</td>
-          <td>${transaction.description}</td>
-          <td>${transaction.status}</td>
-      </tr>
-  `
-    )
-    .join("");
-
   // Calculate Deposit and Withdraw
   total_calc.innerHTML = user.transactions
     .reduce((acc, curr) => {
@@ -132,6 +119,27 @@ function loadDashboard() {
           : 0),
     0
   );
+
+  // Transactions sorted
+  const sorted = [...user.transactions].sort((a, b) => {
+    return ascending ? a.amount - b.amount : b.amount - a.amount;
+  });
+
+  tbody.innerHTML = sorted
+    .map(
+      (transaction) => `
+    <tr>
+        <td>${transaction.type === "deposit" ? "Deposit" : "Withdraw"}</td>
+        <td>${
+          transaction.type === "deposit" ? "+" : "-"
+        }${transaction.amount.toLocaleString()}</td>
+        <td>${transaction.date.replace(/-/g, "/")}</td>
+        <td>${transaction.description}</td>
+        <td>${transaction.status}</td>
+    </tr>
+`
+    )
+    .join("");
 }
 
 // Transaction Deposit
@@ -177,7 +185,7 @@ btn_withdraw.addEventListener("click", (e) => {
   console.log(amount);
   const maxAllowed = user.balance;
 
-  if (!amount && amount <= 0) {
+  if (!amount || amount <= 0) {
     alert("Invalid Amount!");
     return;
   }
@@ -205,6 +213,14 @@ btn_withdraw.addEventListener("click", (e) => {
 
   loadDashboard();
   input_withdraw.value = "";
+});
+
+// Chevron-down Action
+let ascending = true;
+chevron_down.addEventListener("click", (e) => {
+  ascending = !ascending;
+  chevron_down.classList.toggle("chevron-head-table", !ascending);
+  loadDashboard();
 });
 
 // Logout User

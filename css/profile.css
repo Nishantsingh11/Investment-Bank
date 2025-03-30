@@ -38,12 +38,12 @@
   gap: 5px;
 }
 
-.user-detail{
+.user-detail {
   display: flex;
   justify-content: space-between;
 }
 
-.btn-logout{
+.btn-logout {
   border-radius: var(--border-radius);
   padding: 2px 7px;
   border: none;
@@ -67,24 +67,44 @@
 }
 
 /* Left List --- User Transactions */
-.badge-table, .calculate {
+.badge-table,
+.calculate {
   min-width: 100%;
   border-collapse: collapse;
   border: 2px solid rgb(140 140 140);
   font-size: 0.8rem;
 }
 
-.badge-table{
+.badge-table {
   margin-bottom: 12px;
 }
 
 .table-head,
-.table-body, .thead-calc th {
+.table-body,
+.thead-calc th {
   border: 1px solid rgb(160 160 160);
   padding: 8px 10px;
 }
 
-.tbody td, .tbody-calc td{
+.chevron-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  border: none;
+}
+
+.chevron-head i {
+  transition: transform 0.3s;
+}
+
+.chevron-head-table i {
+  transform: rotate(180deg);
+}
+
+.tbody td,
+.tbody-calc td {
   border: 1px solid rgb(160 160 160);
   padding: 8px 10px;
   text-align: center;
@@ -113,7 +133,8 @@
   border: none;
 }
 
-.input-deposit, .input-withdraw {
+.input-deposit,
+.input-withdraw {
   padding-left: var(--padding-panel-right);
 }
 /* End User Panel */
