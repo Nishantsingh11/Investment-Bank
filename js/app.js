@@ -13,6 +13,7 @@ const balance = document.querySelector(".balance");
 const id = document.querySelector(".id");
 const joinDate = document.querySelector(".joinDate");
 
+// Logout Button
 const logout = document.querySelector(".btn-logout");
 
 // Left Dashboard
@@ -21,9 +22,13 @@ const total_calc = document.querySelector(".total-calc");
 const total_deposit = document.querySelector(".total-deposit");
 const total_withdraw = document.querySelector(".total-withdraw");
 
-// Right Dashboard
+// Right Dashboard --- Deposit Action
 const input_deposit = document.querySelector(".input-deposit");
-const btn_transaction = document.querySelector(".btn-transaction");
+const btn_deposit = document.querySelector(".btn-deposit");
+
+// Right Dashboard --- Withdraw Action
+const input_withdraw = document.querySelector(".input-withdraw");
+const btn_withdraw = document.querySelector(".btn-withdraw");
 
 // Reset User
 let currentUser = null;
@@ -76,7 +81,7 @@ function loadDashboard() {
   // Top Dashboard
   fullName.textContent = user.fullName;
   email.textContent = `(${user.email})`;
-  balance.textContent = user.balance;
+  balance.textContent = user.balance.toLocaleString();
   id.textContent = user.accountNumber;
   joinDate.textContent = `(${user.joinDate})`;
 
@@ -128,6 +133,79 @@ function loadDashboard() {
     0
   );
 }
+
+// Transaction Deposit
+btn_deposit.addEventListener("click", (e) => {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
+  const amount = parseFloat(input_deposit.value);
+  const maxAllowed = user.balance * 0.1;
+
+  if (!amount || amount <= 0) {
+    alert("Invalid Amount!");
+    return;
+  }
+
+  if (amount > maxAllowed) {
+    alert(`The maximum amount permitted: ${maxAllowed.toLocaleString()}`);
+    return;
+  }
+
+  const newTransaction = {
+    transactionId: new Date().toString(),
+    type: "deposit",
+    amount: amount,
+    date: new Date().toISOString().split("T")[0],
+    description: "Cash Deposit",
+    category: "Income",
+    status: "Successful",
+  };
+
+  user.balance += amount;
+  user.transactions.push(newTransaction);
+  localStorage.setItem("currentUser", JSON.stringify(user));
+
+  loadDashboard();
+  input_deposit.value = "";
+});
+
+// Transaction Withdraw
+btn_withdraw.addEventListener("click", (e) => {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
+  const amount = parseFloat(input_withdraw.value);
+  console.log(amount);
+  const maxAllowed = user.balance;
+
+  if (!amount && amount <= 0) {
+    alert("Invalid Amount!");
+    return;
+  }
+
+  if (amount > maxAllowed) {
+    alert(
+      `Insufficient inventory! Maximum allowed: ${maxAllowed.toLocaleString()}`
+    );
+    return;
+  }
+
+  const newTransaction = {
+    transactionId: new Date().toString(),
+    type: "withdrawal",
+    amount: amount,
+    date: new Date().toISOString().split("T")[0],
+    description: "Cash Withdrawal",
+    category: "cost",
+    status: "Successful",
+  };
+
+  user.balance -= amount;
+  user.transactions.push(newTransaction);
+  localStorage.setItem("currentUser", JSON.stringify(user));
+
+  loadDashboard();
+  input_withdraw.value = "";
+});
 
 // Logout User
 logout.addEventListener("click", () => {
