@@ -1,6 +1,16 @@
+/*
+
+laptop -> 1024
+tablet -> 768
+mobile -> 320 (small)
+
+*/
+
+
 /* Start User Panel */
 
 /* Main Setting */
+
 .user-panel {
   display: none;
   grid-template-columns: 1fr 1fr;
@@ -16,6 +26,18 @@
   border-radius: 5px;
   box-shadow: 3px 3px 5px #cfc3c3;
   background-color: var(--main-color);
+}
+
+/* depesit and widthraw media queries */
+@media screen and (max-width: 768px) {
+ .change__user-panel {
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+  .badge__user-panel {
+    grid-column: 1/-1;
+    grid-row: 3;
+  }
 }
 
 .info__user-panel {
