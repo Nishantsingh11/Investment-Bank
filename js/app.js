@@ -4,7 +4,6 @@ const login = document.querySelector(".login-form");
 const usernameInput = document.querySelector(".input-username");
 const passwordInput = document.querySelector(".input-password");
 const messageDiv = document.querySelector(".message");
-
 // Top Dashboard
 const dashboard = document.querySelector(".user-panel");
 const fullName = document.querySelector(".fullName");
